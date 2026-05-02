@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Servicios de Programación</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- ICONOS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <h2 class="logo">
+    <img src="imagenes/logo.jpeg" alt="Logo" class="logo-img">
+    M&E Dev
+  </h2>
+
+  <div class="menu-toggle">☰</div>
+
+  <div class="nav-container">
+    <ul class="nav-links">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#about">Nosotros</a></li>
+      <li><a href="#services">Servicios</a></li>
+      <li><a href="#projects">Proyectos</a></li>
+      <li><a href="#contact">Contacto</a></li>
+    </ul>
+
+    <!-- INSTAGRAM -->
+    <div class="social-icons">
+      <a href="https://www.instagram.com/nnaa.vargas/" target="_blank" class="ig-icon">
+        <i class="fab fa-instagram"></i>
+        <span class="ig-label">M</span>
+      </a>
+
+      <a href="https://www.instagram.com/obs_moglixx/" target="_blank" class="ig-icon">
+        <i class="fab fa-instagram"></i>
+        <span class="ig-label">E</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="inicio" class="hero">
+  <div class="overlay"></div>
+
+  <div class="hero-content reveal">
+    <h1>M&E DEV</h1>
+    <h2>Desarrollo de Software Profesional</h2>
+    <p>Transformamos ideas en soluciones digitales modernas</p>
+  </div>
+</section>
+
+<!-- NOSOTROS -->
+<section id="about" class="about reveal">
+  <h2>Mariana & Enrique</h2>
+
+  <p>
+    Somos desarrolladores especializados en crear aplicaciones, sistemas y plataformas
+    que ayudan a crecer negocios y proyectos digitales.
+  </p>
+
+  <!-- EXTRA PRO -->
+  <div class="about-extra">
+
+    <div class="about-diff">
+      <div>⚡ Respuesta rápida</div>
+      <div>🎯 Soluciones personalizadas</div>
+      <div>💡 Enfoque en resultados</div>
+    </div>
+
+    <a href="#contact" class="about-btn">Trabaja con nosotros</a>
+
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="services" class="services">
+  <h2 class="reveal">Servicios</h2>
+
+  <div class="grid">
+    <div class="card reveal delay-1">
+      <h3>Desarrollo Web</h3>
+      <p>Diseñamos páginas modernas, rápidas y adaptadas a cualquier dispositivo.</p>
+    </div>
+
+    <div class="card reveal delay-2">
+      <h3>Apps Móviles</h3>
+      <p>Aplicaciones para Android y iOS enfocadas en rendimiento y experiencia.</p>
+    </div>
+
+    <div class="card reveal delay-3">
+      <h3>Software de Escritorio</h3>
+      <p>Programas personalizados para automatizar procesos.</p>
+    </div>
+
+    <div class="card reveal delay-1">
+      <h3>Bases de datos</h3>
+      <p>Desarrollamos sistemas de bases de datos de cualquier tipo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROYECTOS -->
+<section id="projects" class="projects-section">
+  <h2 class="reveal">Proyectos</h2>
+
+  <div class="projects-grid">
+    <div class="project-card reveal-left">
+      <img src="imagenes/paginaweb.png" alt="Proyecto 1">
+      <h3>Sistema de Ventas</h3>
+      <p>Página web informativa con gestión de inventario y ventas.</p>
+    </div>
+
+    <div class="project-card reveal">
+      <img src="imagenes/based.png" alt="Proyecto 2">
+      <h3>Bases de Datos</h3>
+      <p>Bases de datos relacionales y no relacionales.</p>
+    </div>
+
+    <div class="project-card reveal-right">
+      <img src="imagenes/clean ctrl.png" alt="Proyecto 3">
+      <h3>Inventario para Windows</h3>
+      <p>Inventario diseñado para una tienda de detergentes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contact" class="contact reveal">
+  <h2>Contacto</h2>
+  <p>Envíanos un mensaje</p>
+
+  <form>
+    <input type="text" placeholder="Nombre" required>
+    <input type="email" placeholder="Correo" required>
+    <textarea placeholder="Mensaje" rows="5" required></textarea>
+    <button type="submit">Enviar</button>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Mariana & Enrique</p>
+</footer>
+
+<!-- JS -->
+<script>
+// MENU
+const toggle = document.querySelector('.menu-toggle');
+const nav = document.querySelector('.nav-links');
+
+toggle.addEventListener('click', () => {
+  nav.classList.toggle('active');
+});
+
+// NAVBAR SCROLL
+let lastScroll = 0;
+const navbar = document.querySelector('.navbar');
+
+window.addEventListener('scroll', () => {
+  let currentScroll = window.pageYOffset;
+
+  if (currentScroll <= 0) {
+    navbar.classList.remove('hide');
+    return;
+  }
+
+  if (currentScroll > lastScroll) {
+    navbar.classList.add('hide');
+  } else {
+    navbar.classList.remove('hide');
+  }
+
+  lastScroll = currentScroll;
+});
+
+// ANIMACIONES
+const reveals = document.querySelectorAll('.reveal');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+    }
+  });
+}, { threshold: 0.15 });
+
+reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
